@@ -9,14 +9,13 @@ function Filmes() {
     const[ duracao, setDuracao ] = useState("");
     const[ categoria, setCategoria ] = useState("");
     const[ imagem, setImagem ] = useState("");
-    const[ filmes, setFilmes ] = useState("");
     const[ erro, setErro ] = useState("");
     const[ cadastro, setCadastro ] = useState("");
     
    
     function Cadastrofilme (evento){
         evento.preventDefault();
-        fetch("http://10.139.75.32:8080/filmes", {
+        fetch( process.env.REACT_APP_BACKEND +"filmes", {
             method:"POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -28,14 +27,15 @@ function Filmes() {
                     categoria : categoria,
                     duracao:duracao,
                     descricao:descricao,
-                    titulo:titulo
+                    titulo:titulo,
+                    imagem:imagem
 
                                 }
             )
         })
         .then((resposta) => resposta.json() )
         .then((json) => {
-            if( json.titulo){
+            if( json._id){
                 setCadastro( true );
                 setErro(false)
             }else{
