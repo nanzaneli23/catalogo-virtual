@@ -5,8 +5,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './Login';
 import Cadastro from './Cadastro';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import Filmes from './Filmes';
-import EditaFilme from './components/EditaFilme';
+import Produtos from './Filmes';
+import EditaProdutos from './components/EditaFilme';
+import Menu from './components/Menu';
 
 const theme = createTheme({
   palette: {
@@ -35,11 +36,15 @@ const router = createBrowserRouter([
     element:<Cadastro/>
   },
   {
-    path:"/filmes",
-    element:<Filmes/>
+    path:"/produtos",
+    element:<Produtos/>
   },{
     path:"/edicao/:id",
-  element:<EditaFilme/>
+  element:<EditaProdutos/>
+  },
+  {
+    path:"/menu",
+    element:<Menu/>
   }
  
 

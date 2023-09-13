@@ -2,7 +2,7 @@ import { Alert, Box, Button, Container, TextField, Typography } from '@mui/mater
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
-function EditaFilme() {
+function EditaProdutos() {
 
     const { id } =useParams();
 
@@ -18,7 +18,7 @@ function EditaFilme() {
     const[ editar, setEditar ] = useState(false);
 
     useEffect(()=>{
-        fetch( process.env.REACT_APP_BACKEND +"filmes/" + id, {
+        fetch( process.env.REACT_APP_BACKEND +"produtos/" + id, {
             method:"GET",
             headers: {
                 'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ function EditaFilme() {
           setAno(json.ano);
           setImagem(json.imagem);
             } else{
-                setErro("Filme não encontrado");
+                setErro("Produto não encontrado");
             }
          
          } )
@@ -45,7 +45,7 @@ function EditaFilme() {
 
     function Editar(evento){
         evento.preventDefault();
-        fetch( process.env.REACT_APP_BACKEND +"filmes", {
+        fetch( process.env.REACT_APP_BACKEND +"produtos", {
             method:"PUT",
             headers: {
                 'Content-Type': 'application/json'
@@ -71,7 +71,7 @@ function EditaFilme() {
                 setErro(false)
             }else{
                 setErro( true );
-                setEditar("Não foi possível editar o filme");
+                setEditar("Não foi possível editar o produtos");
             }
          } )
         .catch((erro) => { setErro(true) })
@@ -92,7 +92,7 @@ function EditaFilme() {
  <Typography component="span" variant='h4'>Edição</Typography>
         
         {erro &&(<Alert severity='warning'>{erro}</Alert>)}
-        {editar &&(<Alert severity='success'>Filme editado com sucesso</Alert>)}
+        {editar &&(<Alert severity='success'>Produto editado com sucesso</Alert>)}
 
         <Box component="form" onSubmit={Editar}>
 
@@ -118,24 +118,8 @@ function EditaFilme() {
             fullWidth 
             
              />
-           <TextField
-            label="Ano" 
-            variant= "filled" 
-            type="number"
-            margin='normal'
-            value={ano}
-            onChange={(e)=> setAno( e.target.value )}
-            fullWidth 
-            />
-             <TextField
-            label="Duração" 
-            variant= "filled" 
-            type="text"
-            margin='normal'
-            value={duracao}
-            onChange={(e)=> setDuracao( e.target.value )}
-            fullWidth 
-            />
+           
+            
             <TextField 
             label="Categoria"
             variant= "filled" 
@@ -167,4 +151,4 @@ function EditaFilme() {
   )
 }
 
-export default EditaFilme;
+export default EditaProdutos;

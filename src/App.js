@@ -1,6 +1,9 @@
 import { Avatar, Button, Container } from "@mui/material";
 import { useEffect, useState } from "react";
 import Filme from "./components/Filme";
+import Menu from "./components/Menu";
+
+
 
 function App() {
 
@@ -45,13 +48,18 @@ function App() {
   }
 
   return(
+   
     <>
-    <h1>Filmes</h1>
+    <Menu/>
+   
+    <h1>lacoste</h1>
     <Container sx={{
       display:"flex",
       flexFlow: "row",
       flexWrap: "wrap",
-      gap:"2rem"
+      gap:"2rem",
+      
+      
     }}>
     
     

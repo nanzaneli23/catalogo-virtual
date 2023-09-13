@@ -2,7 +2,7 @@ import { Card, CardActionArea, CardContent, CardMedia, Grid, Typography,Link } f
 import React from 'react'
 
 
-function Filme(props) {
+function Produtos(props) {
   return (
     <Card sx={{ maxWidth: 345}}>
     <Card>
@@ -25,13 +25,7 @@ function Filme(props) {
                 <Grid item xs={2}>
                     <span>{props.categoria}</span>
                 </Grid>
-                <Grid item xs={2}>
-                    <span>{props.ano}</span>
-                </Grid>
-                <Grid item xs= {2}>
-                    <span>{props.duracao}</span>
-                </Grid>
-
+                
             </Grid>
             </CardContent>
         </CardActionArea>
@@ -47,4 +41,4 @@ function Filme(props) {
   )
 }
 
-export default Filme
+export default Produtos;

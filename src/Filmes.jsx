@@ -2,7 +2,7 @@ import { Box, Button, Container,  TextField, Typography, Alert} from '@mui/mater
 import React, {  useEffect, useState } from 'react'
 
 
-function Filmes() {
+function Produtos() {
     const[ titulo, setTitulo ] = useState("");
     const[ descricao, setDescricao ] = useState("");
     const[ ano, setAno ] = useState("");
@@ -13,9 +13,9 @@ function Filmes() {
     const[ cadastro, setCadastro ] = useState("");
     
    
-    function Cadastrofilme (evento){
+    function Cadastroprodutos (evento){
         evento.preventDefault();
-        fetch( process.env.REACT_APP_BACKEND +"filmes", {
+        fetch( process.env.REACT_APP_BACKEND +"produtos", {
             method:"POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -23,9 +23,9 @@ function Filmes() {
             body: JSON.stringify(
 
                 {
-                    ano: ano,
+                    ano: " ",
                     categoria : categoria,
-                    duracao:duracao,
+                    duracao:" ",
                     descricao:descricao,
                     titulo:titulo,
                     imagem:imagem
@@ -70,10 +70,10 @@ function Filmes() {
         alignItems:"center",
        
 }}>      
-     <Typography component="span" variant='h4'>Filmes</Typography>
+     <Typography component="span" variant='h4'>Produtos</Typography>
      {erro &&(<Alert severity='warning' sx={{ mt:2, mb:2}}>Desculpe tente novamente</Alert>)}
-    {cadastro &&(<Alert severity='success' sx={{ mt:2, mb:2}}>Obrigado por cadastrar seu filme</Alert>)}
-    <Box component="form" onSubmit={Cadastrofilme}>
+    {cadastro &&(<Alert severity='success' sx={{ mt:2, mb:2}}>Obrigado por cadastrar seu produto</Alert>)}
+    <Box component="form" onSubmit={Cadastroprodutos}>
 
     <TextField 
             label="Titulo"
@@ -97,24 +97,8 @@ function Filmes() {
             fullWidth 
             
              />
-           <TextField
-            label="Ano" 
-            variant= "filled" 
-            type="number"
-            margin='normal'
-            value={ano}
-            onChange={(e)=> setAno( e.target.value )}
-            fullWidth 
-            />
-             <TextField
-            label="Duração" 
-            variant= "filled" 
-            type="text"
-            margin='normal'
-            value={duracao}
-            onChange={(e)=> setDuracao( e.target.value )}
-            fullWidth 
-            />
+          
+            
             <TextField 
             label="Categoria"
             variant= "filled" 
@@ -137,7 +121,7 @@ function Filmes() {
              />
             
            
-           <Button  type="submit"   variant="contained" fullWidth sx={ {mt:2, mb:2} } >Cadastrar Filme</Button>
+           <Button  type="submit"   variant="contained" fullWidth sx={ {mt:2, mb:2} } >Cadastrar Produtos</Button>
 
            </Box>
         </Box>
@@ -145,4 +129,4 @@ function Filmes() {
   )
 }
 
-export default Filmes;
+export default Produtos;
