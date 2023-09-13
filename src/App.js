@@ -22,6 +22,28 @@ function App() {
 
   
   }, [])
+
+  function Excluir(evento, id){
+    evento.preventDefault();
+    fetch( process.env.REACT_APP_BACKEND +"filmes", {
+      method:"DELETE",
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: id
+      }
+
+      )
+  })
+  .then((resposta) => resposta.json() )
+  .then((json) => {
+      const novalista = filmes.filter((filme)=> filme._id !== id);
+      setFilmes(novalista);
+   } )
+  .catch((error) => { setErro(true) })
+  }
+
   return(
     <>
     <h1>Filmes</h1>
@@ -41,6 +63,8 @@ function App() {
         ano={filme.ano}
         categoria={filme.categoria}
         descricao={filme.descricao}
+        excluir={(e) => Excluir(e, filme._id)}
+        id={filme._id}
 
         />
       ))
