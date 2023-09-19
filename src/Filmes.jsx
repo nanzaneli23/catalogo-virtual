@@ -59,6 +59,7 @@ function Produtos() {
     }, [cadastro]);
 
   return (
+   
     <Container component="section" maxWidth="xs">
          <Box sx={{
         mt:20,

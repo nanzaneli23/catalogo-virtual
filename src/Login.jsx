@@ -3,6 +3,8 @@ import React from 'react'
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import { useState, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
+import MenuResponsivo from './components/MenuResponsivo';
+
 
 const theme = createTheme({
     palette: {
@@ -68,6 +70,9 @@ function Login() {
         .catch((erro) => { setErro(true) })
     }
       return (
+      <>
+    <MenuResponsivo></MenuResponsivo>
+
     <ThemeProvider theme={theme}>
    <Container component="section" maxWidth="xs">
     <Box sx={{
@@ -117,13 +122,14 @@ function Login() {
                 Esqueci a senha
             </Grid>
             <Grid item>
-                <a href="http://localhost:3000/Cadastro">Cadastrar</a>
+                <a className='color' href="http://localhost:3000/Cadastro">Cadastrar</a>
             </Grid>
            </Grid>
         </Box>
     </Box>
    </Container>
    </ThemeProvider>
+ </>
   )
 }
 

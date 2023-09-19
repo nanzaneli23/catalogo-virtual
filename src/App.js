@@ -1,18 +1,19 @@
 import { Avatar, Button, Container } from "@mui/material";
 import { useEffect, useState } from "react";
-import Filme from "./components/Filme";
-import Menu from "./components/Menu";
+import Produto from "./components/Produto";
+import MenuResponsivo from "./components/MenuResponsivo";
+import  "./global.css"
 
 
 
 function App() {
 
-  const [ filmes, setFilmes] = useState();
+  const [ produtos, setProdutos] = useState();
   const [ erro, setErro] = useState();
   
 
   useEffect( () =>{
-    fetch( process.env.REACT_APP_BACKEND +"filmes", {
+    fetch( process.env.REACT_APP_BACKEND +"produtos", {
       method:"GET",
       headers: {
           'Content-Type': 'application/json'
@@ -20,7 +21,7 @@ function App() {
       
   })
   .then((resposta) => resposta.json() )
-  .then((json) => { setFilmes(json)} )
+  .then((json) => { setProdutos(json)} )
   .catch((erro) => { setErro(true) })
 
   
@@ -28,7 +29,7 @@ function App() {
 
   function Excluir(evento, id){
     evento.preventDefault();
-    fetch( process.env.REACT_APP_BACKEND +"filmes", {
+    fetch( process.env.REACT_APP_BACKEND +"produtos", {
       method:"DELETE",
       headers: {
           'Content-Type': 'application/json'
@@ -41,8 +42,8 @@ function App() {
   })
   .then((resposta) => resposta.json() )
   .then((json) => {
-      const novalista = filmes.filter((filme)=> filme._id !== id);
-      setFilmes(novalista);
+      const novalista = produtos.filter((produto)=> produto._id !== id);
+      setProdutos(novalista);
    } )
   .catch((error) => { setErro(true) })
   }
@@ -50,9 +51,9 @@ function App() {
   return(
    
     <>
-    <Menu/>
+    <MenuResponsivo/>
    
-    <h1>lacoste</h1>
+   <h1>Principais Novidades </h1>
     <Container sx={{
       display:"flex",
       flexFlow: "row",
@@ -63,16 +64,16 @@ function App() {
     }}>
     
     
-    {filmes && (
-      filmes.map((filme, index) => (
-        <Filme imagem={filme.imagem}
-        titulo={filme.titulo}
-        duracao={filme.duracao}
-        ano={filme.ano}
-        categoria={filme.categoria}
-        descricao={filme.descricao}
-        excluir={(e) => Excluir(e, filme._id)}
-        id={filme._id}
+    {produtos && (
+      produtos.map((produto, index) => (
+        <Produto imagem={produto.imagem}
+        titulo={produto.titulo}
+        duracao={produto.duracao}
+        ano={produto.ano}
+        categoria={produto.categoria}
+        descricao={produto.descricao}
+        excluir={(e) => Excluir(e, produto._id)}
+        id={produto._id}
 
         />
       ))

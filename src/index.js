@@ -7,7 +7,7 @@ import Cadastro from './Cadastro';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import Produtos from './Filmes';
 import EditaProdutos from './components/EditaFilme';
-import Menu from './components/Menu';
+import Menu from './components/MenuResponsivo';
 
 const theme = createTheme({
   palette: {
@@ -42,11 +42,7 @@ const router = createBrowserRouter([
     path:"/edicao/:id",
   element:<EditaProdutos/>
   },
-  {
-    path:"/menu",
-    element:<Menu/>
-  }
- 
+  
 
 ]);
  const root = ReactDOM.createRoot(document.getElementById('root'));

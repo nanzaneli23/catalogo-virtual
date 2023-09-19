@@ -78,10 +78,9 @@ function EditaProdutos() {
         .catch((erro) => { setErro(true) })
     }
 
-   
   return (
-    
-    
+   
+ 
    <Container component="section" maxWidth="xs">
     <Box sx={{
         mt:20,
@@ -92,8 +91,9 @@ function EditaProdutos() {
         flexDirection:"column",
         alignItems:"center",
        
-}}>   
-   
+}}>      
+    
+                
  <Typography component="span" variant='h4'>Edição</Typography>
         
         {erro &&(<Alert severity='warning'>{erro}</Alert>)}
@@ -148,12 +148,19 @@ function EditaProdutos() {
        
        <Button  type="submit"   variant="contained" fullWidth sx={ {mt:2, mb:2} } >Editar</Button>
 
+      
+                
+                    
+                
+                        
+                    
+
 
  
     </Box>
     </Box>
    </Container>
-    
+         
   )
 }
 
