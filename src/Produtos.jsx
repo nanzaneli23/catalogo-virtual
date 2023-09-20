@@ -28,7 +28,8 @@ function Produtos() {
                     duracao:" ",
                     descricao:descricao,
                     titulo:titulo,
-                    imagem:imagem
+                    imagem:imagem,
+                    usuario: localStorage.getItem("usuario")
 
                                 }
             )

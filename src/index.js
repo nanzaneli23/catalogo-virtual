@@ -5,8 +5,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './Login';
 import Cadastro from './Cadastro';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import Produtos from './Filmes';
-import EditaProdutos from './components/EditaFilme';
+import Produtos from './Produtos';
+import EditaProdutos from './components/EditaProduto';
 import Menu from './components/MenuResponsivo';
 
 const theme = createTheme({

@@ -10,11 +10,14 @@ function App() {
 
   const [ produtos, setProdutos] = useState();
   const [ erro, setErro] = useState();
+ 
   
 
   useEffect( () =>{
-    fetch( process.env.REACT_APP_BACKEND +"produtos", {
-      method:"GET",
+
+    const usuario = localStorage.getItem("usuario");
+
+    fetch( process.env.REACT_APP_BACKEND +"produtos/" + usuario, {
       headers: {
           'Content-Type': 'application/json'
       },
@@ -35,7 +38,8 @@ function App() {
           'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        id: id
+        id: id,
+        usuario:localStorage.getItem("usuario")
       }
 
       )

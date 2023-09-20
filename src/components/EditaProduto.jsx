@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
 
+
+
 function EditaProdutos() {
 
-    const { id } =useParams();
-
-    
+    const { id } = useParams();
 
     const[ titulo, setTitulo ] = useState("");
     const[ descricao, setDescricao ] = useState("");
@@ -19,7 +19,10 @@ function EditaProdutos() {
     const[ editar, setEditar ] = useState(false);
 
     useEffect(()=>{
-        fetch( process.env.REACT_APP_BACKEND +"produtos/" + id, {
+        const usuario = localStorage.getItem("usuario");
+        
+
+        fetch( process.env.REACT_APP_BACKEND +"produtos/" + usuario + "/" + id, {
             method:"GET",
             headers: {
                 'Content-Type': 'application/json'
@@ -60,9 +63,9 @@ function EditaProdutos() {
                     duracao:duracao,
                     descricao:descricao,
                     titulo:titulo,
-                    imagem:imagem
-
-                                }
+                    imagem:imagem,
+                    usuario: localStorage.getItem("usuario")
+                }
             )
         })
         .then((resposta) => resposta.json() )
@@ -71,14 +74,15 @@ function EditaProdutos() {
                 setEditar( true );
                 setErro(false)
             }else{
-                setErro( true );
-                setEditar("Não foi possível editar o produtos");
+                setErro( "Não foi possível editar o produtos");
+                setEditar(false);
             }
          } )
         .catch((erro) => { setErro(true) })
     }
 
   return (
+   
    
  
    <Container component="section" maxWidth="xs">
@@ -160,7 +164,7 @@ function EditaProdutos() {
     </Box>
     </Box>
    </Container>
-         
+        
   )
 }
 

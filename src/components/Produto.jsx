@@ -1,4 +1,4 @@
-import { Card, CardActionArea, CardContent, CardMedia, Grid, Typography,Link } from '@mui/material'
+import { Card, CardActionArea, CardContent, CardMedia, Grid, Typography,Link, Button } from '@mui/material'
 import React from 'react'
 
 
@@ -13,7 +13,7 @@ function Produtos(props) {
         <CardActionArea>
             <CardMedia 
              component="img"
-             height="140"
+             height="360"
              image={props.imagem}
              alt={props.titulo}
             />
@@ -34,10 +34,13 @@ function Produtos(props) {
             </CardContent>
         </CardActionArea>
         <Grid item xs={6}>
-        <button onClick={props.excluir}>X</button>
+        <Button onClick={props.excluir}>EXCLUIR</Button>
         </Grid>
         <Grid item xs={6}>
-        <Link href={"edicao/" + props.id}>Editar</Link>
+            <Button>
+            <Link href={"edicao/" + props.id}>EDITAR</Link>
+            </Button>
+       
         </Grid>
        
     </Card>

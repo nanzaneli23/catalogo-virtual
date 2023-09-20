@@ -53,7 +53,7 @@ function MenuResponsivo() {
              
             }}
           >
-          <Foto foto={img}/>
+          <Foto  foto={img}/>
                 
                 
             </Typography>
